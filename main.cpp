@@ -23,7 +23,7 @@ struct Patient {
     }
 };
 
-//DOCTORS
+//doctor
 vector<string> doctors = {
     "Dr. Sharma",
     "Dr. Mehta",
