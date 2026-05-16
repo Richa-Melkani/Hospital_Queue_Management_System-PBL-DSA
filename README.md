@@ -59,10 +59,10 @@ Hospital Queue Management System/
 ## ▶️ How to Run
 
 Compile and run using g++:
-
+```
 g++ main.cpp -o hospital
 ./hospital
-
+```
 ---
 
 ## 🖥️ Menu Options
