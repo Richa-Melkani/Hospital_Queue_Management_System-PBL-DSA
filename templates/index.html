@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="text-center mb-5">
+    <h1 class="fw-bold text-primary">
+        🏥 Hospital Queue Management System
+    </h1>
+
+    <p class="text-muted">
+        Manage patient registration, queue scheduling, doctor assignment and treatment history.
+    </p>
+</div>
+
+<div class="row">
+
+    <!-- Total Patients -->
+    <div class="col-md-4 mb-4">
+        <div class="card shadow border-0 text-center">
+            <div class="card-body">
+                <h5 class="text-primary">Total Patients</h5>
+                <h2>{{ total_patients }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Waiting Patients -->
+    <div class="col-md-4 mb-4">
+        <div class="card shadow border-0 text-center">
+            <div class="card-body">
+                <h5 class="text-warning">Waiting Patients</h5>
+                <h2>{{ waiting_patients }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Treated Patients -->
+    <div class="col-md-4 mb-4">
+        <div class="card shadow border-0 text-center">
+            <div class="card-body">
+                <h5 class="text-success">Treated Patients</h5>
+                <h2>{{ treated_patients }}</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="text-center mt-5">
+
+    <a href="/add_patient" class="btn btn-primary btn-lg me-3">
+        ➕ Add Patient
+    </a>
+
+    <a href="/queue" class="btn btn-success btn-lg">
+        📋 View Queue
+    </a>
+
+</div>
+
+{% endblock %}

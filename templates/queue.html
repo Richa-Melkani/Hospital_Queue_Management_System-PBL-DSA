@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="text-center text-primary mb-4">
+    📋 Patient Queue
+</h2>
+
+{% if patients %}
+
+<div class="card shadow">
+
+    <div class="card-body">
+
+        <table class="table table-bordered table-hover text-center align-middle">
+
+            <thead class="table-primary">
+
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Disease</th>
+                    <th>Severity</th>
+                    <th>Waiting Time</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for patient in patients %}
+
+                <tr>
+
+                    <td>{{ patient.patient_id }}</td>
+
+                    <td>{{ patient.name }}</td>
+
+                    <td>{{ patient.age }}</td>
+
+                    <td>{{ patient.disease }}</td>
+
+                    <td>
+
+                        {% if patient.severity == 1 %}
+                            <span class="badge bg-danger">
+                                Critical
+                            </span>
+
+                        {% elif patient.severity == 2 %}
+                            <span class="badge bg-warning text-dark">
+                                Medium
+                            </span>
+
+                        {% else %}
+                            <span class="badge bg-success">
+                                Low
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+                        {{ patient.waiting_minutes() }} min
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<div class="text-center mt-4">
+
+    <a href="/treat" class="btn btn-danger btn-lg">
+        🩺 Treat Next Patient
+    </a>
+
+</div>
+
+{% else %}
+
+<div class="alert alert-info text-center">
+
+    <h5>No Patients Available.</h5>
+
+</div>
+
+{% endif %}
+
+{% endblock %}
