@@ -10,9 +10,9 @@ def get_connection():
             user=os.getenv("MYSQLUSER"),
             password=os.getenv("MYSQLPASSWORD"),
             database=os.getenv("MYSQLDATABASE"),
-            port=int(os.getenv("MYSQLPORT"),
+            port=int(os.getenv("MYSQLPORT")),
             autocommit=False
-        )
+            )
         return connection
 
     except Error as e:
