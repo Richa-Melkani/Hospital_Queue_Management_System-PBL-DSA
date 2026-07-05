@@ -3,13 +3,13 @@ from datetime import datetime
 
 
 class Patient:
-    def __init__(self, patient_id, name, age, disease, severity):
+    def __init__(self, patient_id, name, age, disease, severity,arrival_time):
         self.patient_id = patient_id
         self.name = name
         self.age = age
         self.disease = disease
         self.severity = severity
-        self.arrival_time = datetime.now()
+        self.arrival_time =arrival_time
 
     def waiting_minutes(self):
         return int((datetime.now() - self.arrival_time).total_seconds() // 60)

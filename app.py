@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for,flash
+from datetime import datetime
 from database.db import get_connection
 from algorithms.priority_queue import Patient, PriorityQueue
 from algorithms.round_robin import RoundRobinScheduler
@@ -48,7 +49,8 @@ def load_patients():
             row["name"],
             row["age"],
             row["disease"],
-            row["severity"]
+            row["severity"],
+            row["arrival_time"]
         )
 
         patient_queue.add_patient(patient)
@@ -63,6 +65,11 @@ def home():
     load_patients()
 
     connection = get_connection()
+    
+    if connection is None:
+        print("❌ Database connection failed")
+    else:
+        print("✅ Database connected")
 
     total_patients = 0
     waiting_patients = 0
@@ -129,7 +136,8 @@ def add_patient():
                 name,
                 age,
                 disease,
-                severity
+                severity,
+                datetime.now()
             )
 
             patient_queue.add_patient(patient)
